@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoneyTrack - Savings Plan</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="savings.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="common.js"></script>
+</head>
+<body>
+
+    <div class="container">
+
+        <aside class="sidebar">
+            <h2 class="logo">MoneyTrack</h2>
+
+            <nav>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="transactions.html">Transactions</a>
+                <a href="budgets.html">Budgets</a>
+                <a href="savings.html" class="active">Savings</a>
+                <a href="settings.html">Settings</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <h1>Savings Plan</h1>
+                <p>Set your goals and track your progress.</p>
+            </header>
+
+            <section class="cards">
+                <div class="card">
+                    <p>Total Saved</p>
+                    <h2 id="totalSaved">Rp 0</h2>
+                </div>
+                <div class="card">
+                    <p>Total Target</p>
+                    <h2 id="totalTarget">Rp 0</h2>
+                </div>
+                <div class="card">
+                    <p>Overall Progress</p>
+                    <h2 id="totalProgress">0%</h2>
+                </div>
+            </section>
+
+            <section class="transaction-form">
+                <h2>New Savings Goal</h2>
+
+                <form id="goalForm">
+                    <div class="field">
+                        <label class="field-label" for="goalName">Goal name</label>
+                        <input type="text" id="goalName" placeholder="e.g. New laptop" required>
+                    </div>
+
+                    <div class="field">
+                        <label class="field-label" for="goalTarget">Target (Rp)</label>
+                        <input type="number" id="goalTarget" placeholder="10000000" min="1" required>
+                    </div>
+
+                    <div class="field">
+                        <label class="field-label" for="goalSaved">Already saved (Rp)</label>
+                        <input type="number" id="goalSaved" placeholder="0" min="0" value="0">
+                    </div>
+
+                    <div class="field">
+                        <label class="field-label" for="goalMonthly">Save per month (Rp)</label>
+                        <input type="number" id="goalMonthly" placeholder="500000" min="1" required>
+                    </div>
+
+                    <button type="submit" class="btn">Add Goal</button>
+                </form>
+
+                <p class="estimate" id="formEstimate"></p>
+            </section>
+
+            <section class="transactions">
+                <h2>My Goals</h2>
+                <p class="note" id="depositNote"></p>
+
+                <div id="goalList">
+                    <p>No savings goal yet.</p>
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="savings.js"></script>
+
+</body>
+</html>

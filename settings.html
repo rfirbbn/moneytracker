@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoneyTrack - Settings</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="savings.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="common.js"></script>
+</head>
+<body>
+
+    <div class="container">
+
+        <aside class="sidebar">
+            <h2 class="logo">MoneyTrack</h2>
+
+            <nav>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="transactions.html">Transactions</a>
+                <a href="budgets.html">Budgets</a>
+                <a href="savings.html">Savings</a>
+                <a href="settings.html" class="active">Settings</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <h1>Settings</h1>
+                <p>Appearance, recurring transactions and your data.</p>
+            </header>
+
+            <section class="transactions">
+                <h2>Account</h2>
+                <p class="note">Logged in as <strong id="accountEmail"></strong></p>
+
+                <form id="passwordForm" class="deposit-row">
+                    <input type="password" id="newPassword" placeholder="New password (min. 8 characters)" minlength="8" required autocomplete="new-password">
+                    <input type="password" id="newPassword2" placeholder="Confirm new password" minlength="8" required autocomplete="new-password">
+                    <button type="submit" class="btn">Change password</button>
+                </form>
+
+                <div class="deposit-row">
+                    <button type="button" class="btn secondary" id="logoutBtn">Log out</button>
+                </div>
+            </section>
+
+            <section class="transactions">
+                <h2>Preferences</h2>
+
+                <label class="check">
+                    <input type="checkbox" id="darkMode">
+                    Dark mode (saved on this device)
+                </label>
+
+                <label class="check">
+                    <input type="checkbox" id="savingsAsExpense">
+                    Record savings deposits as an expense (lowers your balance)
+                </label>
+            </section>
+
+            <section class="transaction-form">
+                <h2>Recurring Transactions</h2>
+
+                <form id="recurringForm">
+                    <div class="field">
+                        <label class="field-label" for="recName">Name</label>
+                        <input type="text" id="recName" placeholder="e.g. Rent" required>
+                    </div>
+
+                    <div class="field">
+                        <label class="field-label" for="recAmount">Amount (Rp)</label>
+                        <input type="number" id="recAmount" placeholder="1000000" min="1" required>
+                    </div>
+
+                    <div class="field">
+                        <label class="field-label" for="recType">Type</label>
+                        <select id="recType">
+                            <option value="expense">Expense</option>
+                            <option value="income">Income</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label class="field-label" for="recCategory">Category</label>
+                        <select id="recCategory"></select>
+                    </div>
+
+                    <div class="field">
+                        <label class="field-label" for="recDay">Day of month (1-28)</label>
+                        <input type="number" id="recDay" min="1" max="28" value="1" required>
+                    </div>
+
+                    <button type="submit" class="btn">Add</button>
+                </form>
+
+                <p class="note" style="margin:15px 0 0">
+                    Recurring transactions are added automatically when you open MoneyTrack on or after their day.
+                </p>
+
+                <div id="recurringList" style="margin-top:15px"></div>
+            </section>
+
+            <section class="transactions">
+                <h2>Your Data</h2>
+                <p class="note">
+                    Your data is stored safely in your account, so you can use MoneyTrack on any device. A backup is still a good idea now and then.
+                </p>
+
+                <div class="deposit-row">
+                    <button type="button" class="btn" id="exportJson">Export backup (JSON)</button>
+                    <button type="button" class="btn secondary" id="exportCsv">Export transactions (CSV)</button>
+                    <button type="button" class="btn secondary" id="importBtn">Import backup file</button>
+                    <button type="button" class="btn secondary" id="migrateBtn">Import data from this browser</button>
+                    <button type="button" class="btn danger" id="resetBtn">Reset all data</button>
+                    <input type="file" id="importFile" accept=".json,application/json" hidden>
+                </div>
+
+                <p class="estimate" id="message"></p>
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="settings.js"></script>
+
+</body>
+</html>

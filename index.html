@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoneyTrack - Log in</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="common.js"></script>
+</head>
+<body class="auth-page" data-redirect-if-logged-in="true">
+
+    <main class="auth-card">
+        <h1 class="logo">MoneyTrack</h1>
+        <p class="auth-message" id="authMessage"></p>
+
+        <!-- LOG IN -->
+        <form id="loginForm" class="auth-form">
+            <h2>Log in</h2>
+            <label>Email
+                <input type="email" id="email" required autocomplete="email">
+            </label>
+            <label>Password
+                <input type="password" id="password" required autocomplete="current-password">
+            </label>
+            <button type="submit" class="btn">Log in</button>
+
+            <div class="auth-links">
+                <button type="button" class="link-btn" id="showReset">Forgot password?</button>
+                <a href="register.html">Create an account</a>
+            </div>
+        </form>
+
+        <!-- FORGOT PASSWORD -->
+        <form id="resetForm" class="auth-form" hidden>
+            <h2>Reset password</h2>
+            <p class="note">Enter your email and we will send you a link to choose a new password.</p>
+            <label>Email
+                <input type="email" id="resetEmail" required autocomplete="email">
+            </label>
+            <button type="submit" class="btn">Send reset link</button>
+
+            <div class="auth-links">
+                <button type="button" class="link-btn" id="showLogin">← Back to log in</button>
+            </div>
+        </form>
+    </main>
+
+    <script src="auth.js"></script>
+</body>
+</html>

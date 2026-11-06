@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoneyTrack - Budgets</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="savings.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="common.js"></script>
+</head>
+<body>
+
+    <div class="container">
+
+        <aside class="sidebar">
+            <h2 class="logo">MoneyTrack</h2>
+
+            <nav>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="transactions.html">Transactions</a>
+                <a href="budgets.html" class="active">Budgets</a>
+                <a href="savings.html">Savings</a>
+                <a href="settings.html">Settings</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <h1>Budgets</h1>
+                <p>Set a monthly limit per category and watch your spending.</p>
+            </header>
+
+            <div class="page-tools">
+                <label for="monthFilter">Month</label>
+                <select id="monthFilter"></select>
+            </div>
+
+            <section class="cards">
+                <div class="card">
+                    <p>Total Budget</p>
+                    <h2 id="totalBudget">Rp 0</h2>
+                </div>
+                <div class="card">
+                    <p>Spent</p>
+                    <h2 id="totalSpent">Rp 0</h2>
+                </div>
+                <div class="card">
+                    <p>Remaining</p>
+                    <h2 id="totalLeft">Rp 0</h2>
+                </div>
+            </section>
+
+            <section class="transaction-form">
+                <h2>Set a Budget</h2>
+
+                <form id="budgetForm">
+                    <div class="field">
+                        <label class="field-label" for="budgetCategory">Category</label>
+                        <select id="budgetCategory"></select>
+                    </div>
+
+                    <div class="field">
+                        <label class="field-label" for="budgetLimit">Monthly limit (Rp)</label>
+                        <input type="number" id="budgetLimit" placeholder="1500000" min="1" required>
+                    </div>
+
+                    <button type="submit" class="btn">Save Budget</button>
+                </form>
+                <p class="note" style="margin:15px 0 0">Saving a budget for a category that already has one updates it.</p>
+            </section>
+
+            <section class="transactions">
+                <h2>My Budgets</h2>
+
+                <div id="budgetList">
+                    <p>No budget yet.</p>
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="budgets.js"></script>
+
+</body>
+</html>
